@@ -17,7 +17,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+            // this is to gain access to the scene parameter in function and downcast it to the type of WindowScene
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        // gains access to the entire screen
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // let the window.windowScene contain the scene parameter
+        window?.windowScene = windowScene
+        
+            
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
